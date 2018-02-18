@@ -1,0 +1,64 @@
+@import 'normalize';
+
+// =========================================
+// Colors
+// =========================================
+
+$white: #fff;
+$black: #222;
+
+$blue-dark: #1A2634;
+$blue: #203E5F;
+$gold: #EEC550;
+$yellow: #F9E3A3;
+
+// =========================================
+// Fonts
+// =========================================
+
+$sourcesans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$helvetica: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
+
+// =========================================
+// Functions
+// =========================================
+
+// Rems for font-size, ems for line-height
+@mixin fontsize($size: 20, $line-height: 1.618) {
+  font-size: $size + px;
+  font-size: $size/10 + rem; // If not using html font-size to 62.5%, use 16 instead of 10
+  @if $line-height == normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height;
+  }
+}
+
+@mixin fontsmoothing($value: on) {
+  @if $value == on {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  } @else {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+@mixin transition($properties: all, $duration: 0.19s, $easing: ease) {
+  @if length($properties) > 1 {
+
+    $props: null;
+    @each $p in $properties {
+      $props: append($props, $p, comma);
+    }
+      transition-property: $props;
+      transition-duration: $duration;
+      transition-timing-function: $easing;
+
+  } @elseif $properties == 'none' {
+    transition: none;
+
+  } @else {
+    transition: $properties $duration $easing;
+  }
+}

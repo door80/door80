@@ -1,0 +1,72 @@
+@import 'base';
+
+body {
+  background: $blue;
+  color: $white;
+  font-family: $sourcesans;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+// ==============================
+// Typography
+// ==============================
+
+h1, h2, h3, h4, p, ol, ul {
+  margin: 0 0 1em 0;
+  line-height: 1.5em;
+}
+
+a {
+  font-weight: bold;
+  color: $yellow;
+  text-decoration: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: $blue-dark;
+  border-bottom: 3px solid darken($blue-dark, 10%);
+  color: $white;
+  @include transition();
+  &:hover {
+    background: lighten($blue-dark, 4%);
+    color: $gold;
+  }
+}
+
+// ==============================
+// Layout
+// ==============================
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.home {
+  text-align: center;
+  h1 {
+    span {
+      color: $gold;
+    }
+  }
+}
+
+section {
+  padding: 8em 2em;
+}
+
+#intro {
+  background: $blue-dark;
+}
+
+#action {
+  .button {
+    margin: 1em 2em;
+  }
+}
+
+
+@import 'responsive';
